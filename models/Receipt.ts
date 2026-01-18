@@ -9,6 +9,7 @@ export interface IReceiptItem {
 }
 
 export interface IReceipt extends Document {
+    _id: string;
     receiptNo: string;
     customerName: string;
     date: Date;
