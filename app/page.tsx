@@ -173,32 +173,32 @@ export default function Home() {
               ) : (
                 receipts.map((receipt) => (
                   <tr
-                    key={receipt._id as string}
+                    key={String(receipt._id)}
                     className="hover:bg-gray-50 transition-colors cursor-pointer group"
                   >
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                      <Link href={`/receipts/${receipt._id}`} className="block">
+                      <Link href={`/receipts/${String(receipt._id)}`} className="block">
                         #{receipt.receiptNo}
                       </Link>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      <Link href={`/receipts/${receipt._id}`} className="block">
+                      <Link href={`/receipts/${String(receipt._id)}`} className="block">
                         {receipt.customerName}
                       </Link>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      <Link href={`/receipts/${receipt._id}`} className="block">
+                      <Link href={`/receipts/${String(receipt._id)}`} className="block">
                         {format(new Date(receipt.date), 'MMM dd, yyyy')}
                       </Link>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right font-medium">
-                      <Link href={`/receipts/${receipt._id}`} className="block">
+                      <Link href={`/receipts/${String(receipt._id)}`} className="block">
                         RM {receipt.totalAmount.toFixed(2)}
                       </Link>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <Link
-                        href={`/receipts/${receipt._id}`}
+                        href={`/receipts/${String(receipt._id)}`}
                         className="text-blue-600 hover:text-blue-900 opacity-0 group-hover:opacity-100 transition-opacity"
                       >
                         View
