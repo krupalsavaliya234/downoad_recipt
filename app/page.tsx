@@ -1,5 +1,6 @@
 'use client';
 
+// Force fresh Vercel build - TypeScript ObjectId fixes applied
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { format } from 'date-fns';
