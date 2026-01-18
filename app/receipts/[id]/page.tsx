@@ -3,13 +3,13 @@
 import { useEffect, useState, useRef } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { ArrowLeft, Download, Loader2 } from 'lucide-react';
-import { IReceipt } from '@/models/Receipt';
+import { IReceiptClient } from '@/models/Receipt';
 import { ReceiptView } from '@/components/ReceiptView';
 
 export default function ShowReceiptPage() {
     const params = useParams();
     const router = useRouter();
-    const [receipt, setReceipt] = useState<IReceipt | null>(null);
+    const [receipt, setReceipt] = useState<IReceiptClient | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const [generatingPdf, setGeneratingPdf] = useState(false);

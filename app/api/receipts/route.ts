@@ -18,9 +18,15 @@ export async function GET(request: Request) {
             };
         }
 
-        const receipts = await Receipt.find(query).sort({ createdAt: -1 });
+        const receipts = await Receipt.find(query).sort({ createdAt: -1 }).lean();
 
-        return NextResponse.json({ success: true, data: receipts });
+        // Convert _id to string for client-side compatibility
+        const serializedReceipts = receipts.map(receipt => ({
+            ...receipt,
+            _id: receipt._id.toString(),
+        }));
+
+        return NextResponse.json({ success: true, data: serializedReceipts });
     } catch (error: any) {
         return NextResponse.json(
             { success: false, error: error.message },
@@ -46,7 +52,13 @@ export async function POST(request: Request) {
 
         const receipt = await Receipt.create(body);
 
-        return NextResponse.json({ success: true, data: receipt }, { status: 201 });
+        // Convert to plain object with _id as string
+        const serializedReceipt = {
+            ...receipt.toObject(),
+            _id: receipt._id.toString(),
+        };
+
+        return NextResponse.json({ success: true, data: serializedReceipt }, { status: 201 });
     } catch (error: any) {
         return NextResponse.json(
             { success: false, error: error.message },

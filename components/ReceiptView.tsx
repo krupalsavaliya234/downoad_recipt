@@ -2,10 +2,10 @@
 
 import { forwardRef } from 'react';
 import { format } from 'date-fns';
-import { IReceipt } from '@/models/Receipt';
+import { IReceiptClient } from '@/models/Receipt';
 
 interface ReceiptViewProps {
-    receipt: IReceipt;
+    receipt: IReceiptClient;
 }
 
 export const ReceiptView = forwardRef<HTMLDivElement, ReceiptViewProps>(

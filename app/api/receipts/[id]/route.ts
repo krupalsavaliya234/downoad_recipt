@@ -19,7 +19,13 @@ export async function GET(
             );
         }
 
-        return NextResponse.json({ success: true, data: receipt });
+        // Convert to plain object with _id as string
+        const serializedReceipt = {
+            ...receipt.toObject(),
+            _id: receipt._id.toString(),
+        };
+
+        return NextResponse.json({ success: true, data: serializedReceipt });
     } catch (error: any) {
         return NextResponse.json(
             { success: false, error: error.message },

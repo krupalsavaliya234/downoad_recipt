@@ -9,7 +9,7 @@ export interface IReceiptItem {
 }
 
 export interface IReceipt extends Document {
-    _id: string;
+    _id: mongoose.Types.ObjectId;
     receiptNo: string;
     customerName: string;
     date: Date;
@@ -19,6 +19,11 @@ export interface IReceipt extends Document {
     createdAt: Date;
     updatedAt: Date;
 }
+
+// Client-side type with serialized _id
+export type IReceiptClient = Omit<IReceipt, '_id'> & {
+    _id: string;
+};
 
 const ReceiptItemSchema = new Schema<IReceiptItem>({
     description: { type: String, required: true },

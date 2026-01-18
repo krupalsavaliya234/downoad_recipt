@@ -5,11 +5,11 @@ import Link from 'next/link';
 import { format } from 'date-fns';
 import { Download, Plus, FileText, Loader2 } from 'lucide-react';
 import * as XLSX from 'xlsx';
-import { IReceipt } from '@/models/Receipt';
+import { IReceiptClient } from '@/models/Receipt';
 import DateRangeModal from '@/components/DateRangeModal';
 
 export default function Home() {
-  const [receipts, setReceipts] = useState<IReceipt[]>([]);
+  const [receipts, setReceipts] = useState<IReceiptClient[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [isExportModalOpen, setIsExportModalOpen] = useState(false);
